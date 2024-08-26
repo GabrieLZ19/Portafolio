@@ -9,16 +9,16 @@ export default function Home() {
     <div className="bg-gray-900 min-h-screen text-white">
       <Header />
       <main>
-        <section id="hero">
+        <section id="Hero">
           <Hero />
         </section>
-        <section id="portfolio">
+        <section id="Portfolio">
           <Portfolio />
         </section>
-        <section id="technology">
+        <section id="Technology">
           <Technology />
         </section>
-        <section id="connect">
+        <section id="Contact">
           <Connect />
         </section>
       </main>

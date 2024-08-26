@@ -3,7 +3,7 @@ const Header = () => (
     <nav className="flex justify-around">
       <div className="flex flex-col">
         <a
-          href="#hero"
+          href="#Hero"
           className="relative p-2 hover:text-green-400 group transform transition-transform duration-500 ease-out"
         >
           <span className="absolute inset-0 border border-transparent transition-all duration-500 ease-out group-hover:border-green-400 group-hover:scale-x-100 scale-x-0 origin-center"></span>
@@ -12,7 +12,7 @@ const Header = () => (
           </span>
         </a>
         <a
-          href="#portfolio"
+          href="#Portfolio"
           className="relative p-2 hover:text-green-400 group transform transition-transform duration-500 ease-out"
         >
           <span className="absolute inset-0 border border-transparent transition-all duration-500 ease-out group-hover:border-green-400 group-hover:scale-x-100 scale-x-0 origin-center"></span>
@@ -24,7 +24,7 @@ const Header = () => (
       <span className="text-5xl font-bold">.GZ</span>
       <div className="flex flex-col">
         <a
-          href="#technology"
+          href="#Technology"
           className="relative p-2 hover:text-green-400 group transform transition-transform duration-500 ease-out"
         >
           <span className="absolute inset-0 border border-transparent transition-all duration-500 ease-out group-hover:border-green-400 group-hover:scale-x-100 scale-x-0 origin-center"></span>
@@ -33,7 +33,7 @@ const Header = () => (
           </span>
         </a>
         <a
-          href="#connect"
+          href="#Contact"
           className="relative p-2 hover:text-green-400 group transform transition-transform duration-500 ease-out"
         >
           <span className="absolute inset-0 border border-transparent transition-all duration-500 ease-out group-hover:border-green-400 group-hover:scale-x-100 scale-x-0 origin-center"></span>
