@@ -23,21 +23,21 @@ const projects = [
     description:
       "Desarrollo de un Ecommerce completo con dashboard, integración de localStorage, Context API y diseño responsivo. Uso de React, Next.js y Tailwind CSS para crear una experiencia de usuario optimizada.",
     imageUrl: "./Ecommerce.png",
-    link: "/projects/ecommerce",
+    link: "https://github.com/GabrieLZ19/Ecommerce",
   },
   {
     name: "Sistema de Turnos",
     description:
       "Desarrollo de una aplicación web para gestión de turnos con funcionalidades CRUD. Implementación de estilos modulares con CSS, gestión de estados con Redux y desarrollo con React y TypeScript.",
     imageUrl: "./SistemaTurnos.png",
-    link: "/projects/sistema-de-turnos",
+    link: "https://github.com/GabrieLZ19/SistemaTurnos",
   },
   {
     name: "Cinema",
     description:
       "Desarrollo de una aplicación para mostrar y agregar películas utilizando una base de datos no relacional. Implementación de una interfaz de usuario intuitiva con Bootstrap.",
     imageUrl: "./Cinema.png",
-    link: "/projects/cinema",
+    link: "https://github.com/GabrieLZ19/Cinema",
   },
 ];
 
