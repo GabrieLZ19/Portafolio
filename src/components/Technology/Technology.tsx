@@ -51,7 +51,7 @@ const Technology = () => (
           transition={{ duration: 0.3, delay: index * 0.01 }}
         >
           <div className="text-4xl">{tech.icon}</div>
-          <h3 className="text-white text-lg">{tech.name}</h3>
+          <h3 className="text-white md:text-lg">{tech.name}</h3>
         </motion.div>
       ))}
     </div>

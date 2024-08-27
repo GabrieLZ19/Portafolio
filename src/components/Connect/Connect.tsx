@@ -23,7 +23,7 @@ const Connect = () => (
         <motion.a
           key={index}
           href={social.link}
-          className="bg-gray-800 text-green-400 rounded-full w-24 h-24 flex items-center justify-center text-lg"
+          className="bg-gray-800 text-green-400 rounded-full w-48 h-48 flex items-center justify-center text-lg"
           whileHover={{
             scale: 1.1,
             backgroundColor: "#4ade80",
