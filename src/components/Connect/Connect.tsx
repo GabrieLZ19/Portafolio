@@ -5,19 +5,24 @@ import { motion } from "framer-motion";
 const socialLinks = [
   { name: "GitHub", link: "https://github.com/GabrieLZ19" },
   { name: "LinkedIn", link: "https://www.linkedin.com/in/gabriel-lazo20/" },
-  { name: "Gmail", link: "https://gabriellazo48@gmail.com" },
+  { name: "Gmail", link: "mailto:gabriellazo48@gmail.com" },
 ];
 
 const Connect = () => (
   <section className="p-8">
-    <motion.h2
-      className="text-4xl text-white mb-6"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      Connect with me
-    </motion.h2>
+    <div className="flex items-center gap-4 md:pl-8">
+      <p className="text-gray-400">{"<h3>"}</p>
+      <motion.h2
+        className="text-4xl text-white mb-6"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Connect with me
+      </motion.h2>
+      <p className="text-gray-400">{"<h3>"}</p>
+    </div>
+
     <div className="flex flex-wrap justify-center gap-6">
       {socialLinks.map((social, index) => (
         <motion.a

@@ -64,9 +64,12 @@ const Portfolio = () => {
   const progressPercentage = ((currentIndex + 1) / projects.length) * 100;
 
   return (
-    <section className="p-4 sm:p-8">
-      <h2 className="text-3xl sm:text-4xl text-white mb-4">My Portfolio</h2>
-
+    <section className="p-4 pt-10 sm:p-8">
+      <div className="flex items-center gap-2 md:gap-4 md:pl-8">
+        <p className="text-gray-400">{"<h3>"}</p>
+        <h2 className="text-3xl sm:text-4xl text-white mb-4">My Portfolio</h2>
+        <p className="text-gray-400">{"<h3>"}</p>
+      </div>
       <div className="flex items-center">
         {/* Flecha izquierda */}
         <button

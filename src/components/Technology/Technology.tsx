@@ -32,14 +32,18 @@ const technologies = [
 
 const Technology = () => (
   <section className="p-8">
-    <motion.h2
-      className="text-4xl text-green-400 mb-6"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      My Skills
-    </motion.h2>
+    <div className="flex items-center gap-2 md:gap-3 md:pl-8">
+      <p className="text-gray-400">{"<h3>"}</p>
+      <motion.h2
+        className="text-4xl text-green-400 mb-6"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        My Skills
+      </motion.h2>
+      <p className="text-gray-400">{"<h3>"}</p>
+    </div>
     <div className="grid grid-cols-2 gap-4">
       {technologies.map((tech, index) => (
         <motion.div
