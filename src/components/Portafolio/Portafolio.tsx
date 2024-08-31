@@ -58,7 +58,7 @@ const Portfolio = () => {
   };
 
   const handleImageClick = () => {
-    router.push(projects[currentIndex].link);
+    window.open(projects[currentIndex].link, "_blank");
   };
 
   const progressPercentage = ((currentIndex + 1) / projects.length) * 100;
