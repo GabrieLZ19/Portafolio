@@ -38,7 +38,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container-custom">
-        <div className="flex items-center justify-between h-16 px-4">
+        <div className="flex items-center justify-between h-16 px-4 sm:px-6">
           {/* Logo */}
           <Link href="#inicio" className="text-2xl font-bold gradient-text">
             GL
@@ -60,7 +60,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-foreground text-2xl"
+            className="md:hidden text-foreground text-2xl p-2 mr-6"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <HiX /> : <HiMenu />}
