@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Gabriel Lazo | Desarrollador Full Stack",
     description:
-      "Portafolio profesional de Gabriel Lazo - Desarrollador Full Stack especializado en React, Next.js, Node.js y tecnologías blockchain.",
+      "Portafolio profesional de Gabriel Lazo - Desarrollador Full Stack especializado en React, Next.js, Node.js y React Native.",
     type: "website",
   },
 };
