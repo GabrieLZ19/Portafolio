@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { HiArrowDown } from "react-icons/hi";
 import { contactInfo } from "@/lib/data";
 
@@ -9,109 +8,72 @@ const Hero = () => {
   return (
     <section
       id="inicio"
-      className="min-h-screen flex items-center justify-center animated-gradient relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative bg-background overflow-hidden border-b border-border"
     >
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-blue/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-purple/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div>
+      {/* Background Dots Pattern */}
+      <div className="absolute inset-0 bg-dots opacity-40 pointer-events-none"></div>
 
-      <div className="container-custom px-4 relative z-10">
-        <div className="text-center">
+      <div className="container-custom px-4 md:px-8 relative z-10 w-full mt-20">
+        <div className="flex flex-col items-start max-w-5xl">
+
+          {/* Label */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-6 md:mb-8"
+          >
+            <span className="font-mono text-xs tracking-[0.2em] text-foreground-secondary uppercase px-3 py-1.5 md:px-4 md:py-2 border border-border">
+              Portafolio 2026
+            </span>
+          </motion.div>
+
+          {/* Headline — fluid scale */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            className="mb-6 w-full"
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-4">
-              Hola, soy <span className="gradient-text">Gabriel Lazo</span>
+            <h1 className="text-[2.8rem] leading-[0.92] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7.5rem] font-sans font-bold tracking-tighter text-foreground uppercase">
+              Gabriel Lazo
             </h1>
           </motion.div>
 
+          {/* Subtitle + Scroll arrow */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="mb-10 md:mb-12 w-full flex flex-col md:flex-row md:justify-between md:items-end border-t border-border pt-6 gap-4"
           >
-            <h2 className="text-2xl md:text-4xl text-foreground-secondary mb-6">
-              Desarrollador Full Stack
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-sans text-foreground-secondary leading-tight max-w-xl">
+              Desarrollador Full Stack & Mobile. <br className="hidden sm:block" />
+              Construyendo arquitecturas escalables y experiencias precisas.
             </h2>
+
+            <a
+              href="#sobre-mi"
+              className="hidden md:flex flex-col items-center justify-center text-foreground-secondary hover:text-foreground transition-colors"
+            >
+              <HiArrowDown className="text-2xl" />
+            </a>
           </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg md:text-xl text-foreground-secondary max-w-2xl mx-auto mb-8"
-          >
-            Especializado en{" "}
-            <span className="text-accent-blue font-semibold">React</span>,{" "}
-            <span className="text-accent-blue font-semibold">Next.js</span>,{" "}
-            <span className="text-accent-blue font-semibold">Node.js</span> y{" "}
-            <span className="text-accent-purple font-semibold">
-              React Native
-            </span>
-          </motion.p>
-
+          {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-wrap justify-center gap-4 mb-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
           >
-            <a href="#proyectos" className="btn-primary">
+            <a href="#proyectos" className="btn-primary text-center">
               Ver Proyectos
             </a>
-            <a href="#contacto" className="btn-secondary">
+            <a href="#contacto" className="btn-secondary text-center">
               Contactar
             </a>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex justify-center gap-6 mb-12"
-          >
-            <a
-              href={`https://linkedin.com/in/${contactInfo.linkedin}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-3xl text-foreground-secondary hover:text-accent-blue transition-all hover:scale-110"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin />
-            </a>
-            {contactInfo.github && (
-              <a
-                href={`https://github.com/${contactInfo.github}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-3xl text-foreground-secondary hover:text-accent-blue transition-all hover:scale-110"
-                aria-label="GitHub"
-              >
-                <FaGithub />
-              </a>
-            )}
-            <a
-              href={`mailto:${contactInfo.email}`}
-              className="text-3xl text-foreground-secondary hover:text-accent-blue transition-all hover:scale-110"
-              aria-label="Email"
-            >
-              <FaEnvelope />
-            </a>
-          </motion.div>
-
-          <motion.a
-            href="#sobre-mi"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className="inline-block text-foreground-secondary hover:text-accent-blue transition-all animate-bounce"
-          >
-            <HiArrowDown className="text-4xl" />
-          </motion.a>
         </div>
       </div>
     </section>
@@ -119,3 +81,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

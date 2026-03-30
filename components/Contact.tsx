@@ -5,13 +5,7 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
-import {
-  HiMail,
-  HiPhone,
-  HiLocationMarker,
-  HiCheckCircle,
-} from "react-icons/hi";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { HiCheckCircle } from "react-icons/hi";
 import { contactInfo } from "@/lib/data";
 
 interface FormData {
@@ -37,34 +31,24 @@ const Contact = () => {
   const onSubmit = async (data: FormData) => {
     setIsLoading(true);
     setError("");
-
     try {
-      // EmailJS configuration
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
 
-      // Send email using EmailJS
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          from_name: data.name,
-          from_email: data.email,
-          message: data.message,
-          to_email: "gabriellazo48@gmail.com",
-        },
-        publicKey
-      );
+      await emailjs.send(serviceId, templateId, {
+        from_name: data.name,
+        from_email: data.email,
+        message: data.message,
+        to_email: "gabriellazo48@gmail.com",
+      }, publicKey);
 
       setIsSubmitted(true);
       reset();
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (err) {
       console.error("EmailJS Error:", err);
-      setError(
-        "Hubo un error al enviar el mensaje. Por favor, intenta de nuevo."
-      );
+      setError("Error al enviar. Por favor, intenta de nuevo.");
     } finally {
       setIsLoading(false);
     }
@@ -73,197 +57,135 @@ const Contact = () => {
   return (
     <section
       id="contacto"
-      className="section-padding bg-background-secondary"
+      className="section-padding bg-background border-b border-border"
       ref={ref}
     >
       <div className="container-custom">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-10 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-            <span className="gradient-text">Contacto</span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-accent-blue to-accent-purple mx-auto mb-12"></div>
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-6 md:mb-8 gap-2">
+            <h2 className="text-3xl md:text-5xl font-sans font-bold text-foreground uppercase tracking-tight">
+              Contacto
+            </h2>
+            <span className="font-mono text-xs uppercase tracking-widest text-foreground-secondary">
+              [Protocolo de Comunicación]
+            </span>
+          </div>
+          <div className="w-full h-px bg-border"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Info */}
+        {/* Stack on mobile, 2 cols on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+          {/* Info */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col justify-between"
           >
-            <h3 className="text-2xl font-bold mb-6">¡Hablemos!</h3>
-            <p className="text-foreground-secondary mb-8 leading-relaxed">
-              Estoy siempre abierto a nuevas oportunidades y colaboraciones. No
-              dudes en contactarme si tienes alguna pregunta o propuesta.
-            </p>
-
-            <div className="space-y-6">
-              <a
-                href={`mailto:${contactInfo.email}`}
-                className="flex items-center space-x-4 text-foreground-secondary hover:text-accent-blue transition-colors group"
-              >
-                <div className="text-2xl text-accent-blue group-hover:scale-110 transition-transform">
-                  <HiMail />
-                </div>
-                <div>
-                  <p className="text-sm text-foreground-secondary">Email</p>
-                  <p className="font-semibold">{contactInfo.email}</p>
-                </div>
-              </a>
-
-              <a
-                href={`tel:${contactInfo.phone}`}
-                className="flex items-center space-x-4 text-foreground-secondary hover:text-accent-blue transition-colors group"
-              >
-                <div className="text-2xl text-accent-blue group-hover:scale-110 transition-transform">
-                  <HiPhone />
-                </div>
-                <div>
-                  <p className="text-sm text-foreground-secondary">Teléfono</p>
-                  <p className="font-semibold">{contactInfo.phone}</p>
-                </div>
-              </a>
-
-              <div className="flex items-center space-x-4">
-                <div className="text-2xl text-accent-blue">
-                  <HiLocationMarker />
-                </div>
-                <div>
-                  <p className="text-sm text-foreground-secondary">Ubicación</p>
-                  <p className="font-semibold text-foreground-secondary">
-                    {contactInfo.location}
-                  </p>
-                </div>
-              </div>
+            <div>
+              <h3 className="text-2xl md:text-3xl font-sans font-medium mb-6 md:mb-8">
+                Iniciemos un <br /> nuevo proyecto.
+              </h3>
+              <p className="text-sm md:text-base text-foreground-secondary mb-8 md:mb-12 leading-[1.7] max-w-md">
+                Si necesitas escala, precisión o construir desde cero, estoy disponible para hablar.
+              </p>
             </div>
 
-            <div className="flex space-x-4 mt-8">
-              <a
-                href={`https://linkedin.com/in/${contactInfo.linkedin}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-3xl text-foreground-secondary hover:text-accent-blue transition-all hover:scale-110"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin />
-              </a>
-              {contactInfo.github && (
-                <a
-                  href={`https://github.com/${contactInfo.github}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-3xl text-foreground-secondary hover:text-accent-blue transition-all hover:scale-110"
-                  aria-label="GitHub"
-                >
-                  <FaGithub />
+            <div className="space-y-5 pt-6 border-t border-border">
+              <div className="flex flex-col">
+                <span className="font-mono text-xs uppercase text-foreground-tertiary tracking-widest mb-1">Email</span>
+                <a href={`mailto:${contactInfo.email}`} className="font-sans text-base md:text-lg text-foreground font-medium hover:text-foreground-secondary transition-colors break-all">
+                  {contactInfo.email}
                 </a>
-              )}
+              </div>
+              <div className="flex flex-col">
+                <span className="font-mono text-xs uppercase text-foreground-tertiary tracking-widest mb-1">Ubicación</span>
+                <span className="font-sans text-base md:text-lg text-foreground font-medium">
+                  {contactInfo.location}
+                </span>
+              </div>
             </div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="card"
+            initial={{ opacity: 0, x: 20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
             {isSubmitted ? (
-              <div className="flex flex-col items-center justify-center h-full py-12">
-                <HiCheckCircle className="text-6xl text-green-500 mb-4" />
-                <h3 className="text-2xl font-bold mb-2">¡Mensaje Enviado!</h3>
-                <p className="text-foreground-secondary text-center">
-                  Gracias por contactarme. Te responderé lo antes posible.
+              <div className="flex flex-col items-center justify-center p-10 border border-border bg-background-card">
+                <HiCheckCircle className="text-4xl text-foreground mb-4" />
+                <h3 className="text-xl font-sans font-medium mb-3">Mensaje Transmitido</h3>
+                <p className="text-foreground-secondary text-center font-mono text-xs uppercase">
+                  Comunicación recibida. Respuesta pronto.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-7">
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-semibold mb-2"
-                  >
+                  <label htmlFor="name" className="block font-mono text-xs uppercase tracking-widest text-foreground-secondary mb-3">
                     Nombre
                   </label>
                   <input
                     id="name"
                     type="text"
-                    {...register("name", {
-                      required: "El nombre es requerido",
-                    })}
-                    className="w-full px-4 py-3 bg-background border border-white/10 rounded-lg focus:outline-none focus:border-accent-blue transition-colors text-foreground"
-                    placeholder="Tu nombre"
+                    {...register("name", { required: "Requerido" })}
+                    className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-foreground transition-colors text-foreground placeholder-foreground-tertiary text-sm md:text-base"
+                    placeholder="Tu nombre completo"
                   />
                   {errors.name && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.name.message}
-                    </p>
+                    <p className="text-foreground-tertiary font-mono text-xs mt-2 uppercase">✕ {errors.name.message}</p>
                   )}
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-semibold mb-2"
-                  >
+                  <label htmlFor="email" className="block font-mono text-xs uppercase tracking-widest text-foreground-secondary mb-3">
                     Email
                   </label>
                   <input
                     id="email"
                     type="email"
                     {...register("email", {
-                      required: "El email es requerido",
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: "Email inválido",
-                      },
+                      required: "Requerido",
+                      pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: "Formato inválido" },
                     })}
-                    className="w-full px-4 py-3 bg-background border border-white/10 rounded-lg focus:outline-none focus:border-accent-blue transition-colors text-foreground"
+                    className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-foreground transition-colors text-foreground placeholder-foreground-tertiary text-sm md:text-base"
                     placeholder="tu@email.com"
                   />
                   {errors.email && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.email.message}
-                    </p>
+                    <p className="text-foreground-tertiary font-mono text-xs mt-2 uppercase">✕ {errors.email.message}</p>
                   )}
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-semibold mb-2"
-                  >
+                  <label htmlFor="message" className="block font-mono text-xs uppercase tracking-widest text-foreground-secondary mb-3">
                     Mensaje
                   </label>
                   <textarea
                     id="message"
-                    rows={5}
-                    {...register("message", {
-                      required: "El mensaje es requerido",
-                    })}
-                    className="w-full px-4 py-3 bg-background border border-white/10 rounded-lg focus:outline-none focus:border-accent-blue transition-colors text-foreground resize-none"
-                    placeholder="Tu mensaje..."
+                    rows={4}
+                    {...register("message", { required: "Requerido" })}
+                    className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-foreground transition-colors text-foreground resize-none placeholder-foreground-tertiary text-sm md:text-base"
+                    placeholder="Cuéntame sobre tu proyecto..."
                   />
                   {errors.message && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.message.message}
-                    </p>
+                    <p className="text-foreground-tertiary font-mono text-xs mt-2 uppercase">✕ {errors.message.message}</p>
                   )}
                 </div>
 
-                {error && <p className="text-red-500 text-sm">{error}</p>}
+                {error && <p className="text-foreground-tertiary font-mono text-xs uppercase">✕ {error}</p>}
 
-                <button
-                  type="submit"
-                  className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
-                  disabled={isLoading}
-                >
-                  {isLoading ? "Enviando..." : "Enviar Mensaje"}
-                </button>
+                <div className="pt-2">
+                  <button type="submit" className="w-full btn-primary" disabled={isLoading}>
+                    {isLoading ? "Enviando..." : "Enviar Mensaje"}
+                  </button>
+                </div>
               </form>
             )}
           </motion.div>

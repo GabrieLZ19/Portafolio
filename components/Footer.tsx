@@ -1,73 +1,66 @@
-import { FaLinkedin, FaGithub, FaEnvelope, FaPhone } from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { contactInfo } from "@/lib/data";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-background-secondary border-t border-white/10">
-      <div className="container-custom px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="border-t border-border mt-auto">
+      <div className="container-custom py-12 md:py-16">
+        {/* Top grid — 1 col mobile, 2+2 desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
-          <div>
-            <h3 className="text-2xl font-bold gradient-text mb-4">
+          <div className="sm:col-span-2">
+            <h3 className="text-xl md:text-2xl font-sans font-semibold text-foreground mb-3 tracking-tight">
               Gabriel Lazo
             </h3>
-            <p className="text-foreground-secondary">
-              Desarrollador Full Stack especializado en crear soluciones web
-              innovadoras y escalables.
+            <p className="text-sm text-foreground-secondary max-w-xs">
+              Desarrollador Full Stack & Mobile. Construyendo el futuro desde La Rioja, Argentina.
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Navegación */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
-            <div className="flex flex-col space-y-2">
-              <a
-                href="#inicio"
-                className="text-foreground-secondary hover:text-accent-blue transition-colors"
-              >
-                Inicio
-              </a>
-              <a
-                href="#proyectos"
-                className="text-foreground-secondary hover:text-accent-blue transition-colors"
-              >
-                Proyectos
-              </a>
-              <a
-                href="#contacto"
-                className="text-foreground-secondary hover:text-accent-blue transition-colors"
-              >
-                Contacto
-              </a>
+            <h4 className="text-xs font-mono uppercase tracking-widest text-foreground-secondary mb-4 md:mb-6">
+              Navegación
+            </h4>
+            <div className="flex flex-col space-y-3">
+              {["#inicio", "#proyectos", "#experiencia", "#contacto"].map((href) => (
+                <a
+                  key={href}
+                  href={href}
+                  className="text-sm text-foreground hover:text-foreground-secondary transition-colors capitalize"
+                >
+                  {href.replace("#", "")}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Contact */}
+          {/* Contacto */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contacto</h4>
+            <h4 className="text-xs font-mono uppercase tracking-widest text-foreground-secondary mb-4 md:mb-6">
+              Contacto
+            </h4>
             <div className="flex flex-col space-y-3">
               <a
                 href={`mailto:${contactInfo.email}`}
-                className="flex items-center space-x-2 text-foreground-secondary hover:text-accent-blue transition-colors"
+                className="text-sm text-foreground hover:text-foreground-secondary transition-colors break-all"
               >
-                <FaEnvelope />
-                <span>{contactInfo.email}</span>
+                {contactInfo.email}
               </a>
               <a
                 href={`tel:${contactInfo.phone}`}
-                className="flex items-center space-x-2 text-foreground-secondary hover:text-accent-blue transition-colors"
+                className="text-sm text-foreground hover:text-foreground-secondary transition-colors"
               >
-                <FaPhone />
-                <span>{contactInfo.phone}</span>
+                {contactInfo.phone}
               </a>
-              <div className="flex space-x-4 mt-4">
+              <div className="flex space-x-4 mt-2 pt-3 border-t border-border/50">
                 <a
                   href={`https://linkedin.com/in/${contactInfo.linkedin}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-2xl text-foreground-secondary hover:text-accent-blue transition-all hover:scale-110"
+                  className="text-xl text-foreground hover:text-foreground-secondary transition-colors"
                   aria-label="LinkedIn"
                 >
                   <FaLinkedin />
@@ -77,7 +70,7 @@ const Footer = () => {
                     href={`https://github.com/${contactInfo.github}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-2xl text-foreground-secondary hover:text-accent-blue transition-all hover:scale-110"
+                    className="text-xl text-foreground hover:text-foreground-secondary transition-colors"
                     aria-label="GitHub"
                   >
                     <FaGithub />
@@ -88,10 +81,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-8 pt-8 text-center text-foreground-secondary">
-          <p>
-            &copy; {currentYear} Gabriel Lazo. Todos los derechos reservados.
-          </p>
+        {/* Bottom bar */}
+        <div className="border-t border-border mt-10 md:mt-14 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs font-mono text-foreground-tertiary">
+          <p>&copy; {currentYear} GABRIEL LAZO.</p>
+          <p className="uppercase tracking-widest">Next.js · Tailwind CSS</p>
         </div>
       </div>
     </footer>

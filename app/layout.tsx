@@ -4,29 +4,16 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+// Body Workhorse
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
-  title: "Gabriel Lazo | Desarrollador Full Stack",
+  title: "Gabriel Lazo | Full Stack Developer",
   description:
-    "Portafolio profesional de Gabriel Lazo - Desarrollador Full Stack especializado en React, Next.js, Node.js y tecnologías blockchain.",
-  keywords: [
-    "Gabriel Lazo",
-    "Desarrollador Full Stack",
-    "React",
-    "Next.js",
-    "Node.js",
-    "NestJS",
-    "Blockchain",
-    "Solidity",
-  ],
-  authors: [{ name: "Gabriel Lazo" }],
-  openGraph: {
-    title: "Gabriel Lazo | Desarrollador Full Stack",
-    description:
-      "Portafolio profesional de Gabriel Lazo - Desarrollador Full Stack especializado en React, Next.js, Node.js y React Native.",
-    type: "website",
-  },
+    "Portfolio of Gabriel Lazo - Full Stack Developer specialized in React, Next.js, Node.js and Blockchain solutions.",
 };
 
 export default function RootLayout({
@@ -35,10 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={`${inter.className} antialiased`}>
+    <html lang="es" className="scroll-smooth">
+      <body className={`${inter.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col selection:bg-white selection:text-black`}>
         <Navbar />
-        <main className="min-h-screen">{children}</main>
+        <main className="flex-grow">{children}</main>
         <Footer />
       </body>
     </html>

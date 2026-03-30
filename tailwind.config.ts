@@ -10,26 +10,29 @@ const config: Config = {
     extend: {
       colors: {
         background: {
-          DEFAULT: "#0a0a0a",
-          secondary: "#1a1a1a",
+          DEFAULT: "#050505", // Surface
+          surface: "#0e0e0e", // surface_container_lowest
+          card: "#1a1a1a", // surface_container_high
+          elevated: "#2a2a2a",
         },
         foreground: {
-          DEFAULT: "#f5f5f5",
-          secondary: "#a3a3a3",
+          DEFAULT: "#ffffff",
+          secondary: "#a0a0a0",
+          tertiary: "#c7c6c6",
         },
-        accent: {
-          blue: "#3b82f6",
-          purple: "#8b5cf6",
+        border: {
+          DEFAULT: "#1a1a1a",
+          light: "#474747",
         },
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],
+        display: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        mono: ["ui-monospace", "Menlo", "Monaco", "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "monospace"],
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-in-out",
-        "slide-up": "slideUp 0.6s ease-out",
-        glow: "glow 2s ease-in-out infinite alternate",
+        "slide-up": "slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
       },
       keyframes: {
         fadeIn: {
@@ -40,10 +43,9 @@ const config: Config = {
           "0%": { transform: "translateY(20px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" },
         },
-        glow: {
-          "0%": { boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)" },
-          "100%": { boxShadow: "0 0 30px rgba(139, 92, 246, 0.8)" },
-        },
+      },
+      backgroundImage: {
+        "dot-pattern": "radial-gradient(circle, #474747 1px, transparent 1px)",
       },
     },
   },

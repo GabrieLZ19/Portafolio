@@ -10,7 +10,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -33,24 +33,26 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glass shadow-lg" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 border-b ${
+        isScrolled 
+          ? "bg-background/90 backdrop-blur-md border-border" 
+          : "bg-transparent border-transparent"
       }`}
     >
       <div className="container-custom">
-        <div className="flex items-center justify-between h-16 px-4 sm:px-6">
-          {/* Logo */}
-          <Link href="#inicio" className="text-2xl font-bold gradient-text">
-            GL
+        <div className="flex items-center justify-between h-20 px-4 md:px-8">
+          {/* Logo Minimalista */}
+          <Link href="#inicio" className="text-xl font-display font-bold tracking-tight text-foreground">
+            GABRIEL LAZO
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-10">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-foreground-secondary hover:text-foreground transition-colors duration-300 hover:scale-105 transform"
+                className="font-mono text-xs uppercase tracking-widest text-foreground-secondary hover:text-foreground transition-colors"
               >
                 {link.label}
               </a>
@@ -60,7 +62,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-foreground text-2xl p-2 mr-6"
+            className="lg:hidden text-foreground text-2xl"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <HiX /> : <HiMenu />}
@@ -69,14 +71,14 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden glass border-t border-white/10">
-            <div className="flex flex-col space-y-4 py-4 px-4">
+          <div className="lg:hidden bg-background border-t border-border">
+            <div className="flex flex-col py-6 px-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={handleLinkClick}
-                  className="text-foreground-secondary hover:text-foreground transition-colors duration-300"
+                  className="font-mono text-sm uppercase py-4 border-b border-border/50 text-foreground-secondary hover:text-foreground transition-colors"
                 >
                   {link.label}
                 </a>

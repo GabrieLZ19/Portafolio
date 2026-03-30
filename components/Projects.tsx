@@ -12,92 +12,112 @@ const Projects = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="proyectos" className="section-padding bg-background" ref={ref}>
+    <section id="proyectos" className="section-padding bg-background border-b border-border" ref={ref}>
       <div className="container-custom">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-10 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-            Proyectos <span className="gradient-text">Destacados</span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-accent-blue to-accent-purple mx-auto mb-12"></div>
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-6 md:mb-8 gap-2">
+            <h2 className="text-3xl md:text-5xl font-sans font-bold text-foreground uppercase tracking-tight">
+              Proyectos
+            </h2>
+            <span className="font-mono text-xs uppercase tracking-widest text-foreground-secondary">
+              [Archivo de Producción]
+            </span>
+          </div>
+          <div className="w-full h-px bg-border"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* 1 col mobile, 2 col desktop — no border trick para evitar overflow */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-px md:bg-border border border-border">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="card group cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-background group relative overflow-hidden flex flex-col border-border border md:border-0"
             >
-              {/* Project Image */}
-              <div className="relative h-48 rounded-lg mb-4 overflow-hidden">
+              {/* Image */}
+              <div className="relative aspect-[16/9] overflow-hidden bg-background-card flex items-center justify-center border-b border-border">
                 {project.image ? (
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="object-cover transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
                   />
                 ) : (
-                  <div className="relative h-full bg-gradient-to-br from-accent-blue/20 to-accent-purple/20">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <HiCode className="text-6xl text-foreground-secondary/30" />
-                    </div>
+                  <div className="font-mono text-foreground-tertiary tracking-[0.2em] uppercase text-[10px] px-4 text-center">
+                    // Sin imagen disponible
                   </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-background-secondary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-dots opacity-20 pointer-events-none mix-blend-overlay"></div>
               </div>
 
-              <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-accent-blue transition-colors">
-                {project.title}
-              </h3>
-
-              <p className="text-foreground-secondary mb-4 leading-relaxed">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-1 text-xs bg-accent-purple/10 text-accent-purple rounded border border-accent-purple/20"
-                  >
-                    {tech}
+              {/* Content */}
+              <div className="p-5 md:p-8 flex flex-col flex-1">
+                <div className="flex justify-between items-start mb-3 md:mb-4 gap-3">
+                  <h3 className="text-xl md:text-2xl font-sans font-medium text-foreground tracking-tight">
+                    {project.title}
+                  </h3>
+                  <span className="font-mono text-[9px] text-foreground-secondary border border-border px-1.5 py-0.5 shrink-0">
+                    {String(project.id).padStart(3, "0")}
                   </span>
-                ))}
-              </div>
+                </div>
 
-              {(project.demoUrl || project.githubUrl) && (
-                <div className="flex gap-4 pt-4 border-t border-white/10">
-                  {project.demoUrl && (
+                <p className="text-sm md:text-base text-foreground-secondary mb-5 md:mb-8 leading-[1.7] flex-1">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-5 md:mb-8">
+                  {project.technologies.slice(0, 4).map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-1 font-mono text-[9px] md:text-[10px] uppercase tracking-widest border border-border text-foreground-secondary"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {project.technologies.length > 4 && (
+                    <span className="px-2 py-1 font-mono text-[9px] md:text-[10px] uppercase tracking-widest border border-border text-foreground-secondary">
+                      +{project.technologies.length - 4}
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex mt-auto pt-4 md:pt-6 border-t border-border gap-4 md:gap-6">
+                  {project.demoUrl ? (
                     <a
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-accent-blue hover:text-accent-purple transition-colors"
+                      className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-foreground hover:text-foreground-secondary transition-colors flex items-center gap-2"
                     >
-                      <HiExternalLink />
                       <span>Ver Proyecto</span>
+                      <HiExternalLink />
                     </a>
+                  ) : (
+                    <span className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-foreground-tertiary">
+                      Offline
+                    </span>
                   )}
                   {project.githubUrl && (
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-accent-blue hover:text-accent-purple transition-colors"
+                      className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-foreground hover:text-foreground-secondary transition-colors flex items-center gap-2"
                     >
-                      <HiCode />
                       <span>Código</span>
+                      <HiCode />
                     </a>
                   )}
                 </div>
-              )}
+              </div>
             </motion.div>
           ))}
         </div>
