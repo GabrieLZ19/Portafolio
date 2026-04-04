@@ -10,10 +10,44 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const BASE_URL = "https://gabriellazo.vercel.app"; // ← cambia esto a tu URL real
+
 export const metadata: Metadata = {
-  title: "Gabriel Lazo | Full Stack Developer",
+  title: "Gabriel Lazo | Desarrollador Full Stack & Mobile",
   description:
-    "Portfolio of Gabriel Lazo - Full Stack Developer specialized in React, Next.js, Node.js and Blockchain solutions.",
+    "Portafolio de Gabriel Lazo — Desarrollador Full Stack & Mobile especializado en React, Next.js, Node.js y arquitecturas escalables. La Rioja, Argentina.",
+  metadataBase: new URL(BASE_URL),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: BASE_URL,
+    title: "Gabriel Lazo | Desarrollador Full Stack & Mobile",
+    description:
+      "Portafolio de Gabriel Lazo — Desarrollador Full Stack & Mobile especializado en React, Next.js, Node.js y arquitecturas escalables.",
+    siteName: "Gabriel Lazo — Portafolio",
+    locale: "es_AR",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Gabriel Lazo — Desarrollador Full Stack & Mobile",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gabriel Lazo | Desarrollador Full Stack & Mobile",
+    description:
+      "Portafolio de Gabriel Lazo — Desarrollador Full Stack & Mobile especializado en React, Next.js, Node.js y arquitecturas escalables.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
