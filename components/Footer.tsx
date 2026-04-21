@@ -1,4 +1,4 @@
-import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
 import { contactInfo } from "@/lib/data";
 
 const Footer = () => {
@@ -56,6 +56,15 @@ const Footer = () => {
                 {contactInfo.phone}
               </a>
               <div className="flex space-x-4 mt-2 pt-3 border-t border-border/50">
+                <a
+                  href="https://wa.me/543865376697"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xl text-[#25d366] hover:opacity-75 transition-opacity"
+                  aria-label="WhatsApp"
+                >
+                  <FaWhatsapp />
+                </a>
                 <a
                   href={`https://linkedin.com/in/${contactInfo.linkedin}`}
                   target="_blank"

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { HiArrowDown } from "react-icons/hi";
+import { HiArrowDown, HiDownload } from "react-icons/hi";
 import { contactInfo } from "@/lib/data";
 
 const Hero = () => {
@@ -16,15 +16,19 @@ const Hero = () => {
       <div className="container-custom px-4 md:px-8 relative z-10 w-full mt-20">
         <div className="flex flex-col items-start max-w-5xl">
 
-          {/* Label */}
+          {/* Label + Disponibilidad */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-6 md:mb-8"
+            className="mb-6 md:mb-8 flex flex-wrap items-center gap-3"
           >
             <span className="font-mono text-xs tracking-[0.2em] text-foreground-secondary uppercase px-3 py-1.5 md:px-4 md:py-2 border border-border">
               Portafolio 2026
+            </span>
+            <span className="font-mono text-xs tracking-[0.2em] uppercase px-3 py-1.5 md:px-4 md:py-2 border border-[#25d366] text-[#25d366] flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#25d366] animate-pulse" />
+              Disponible para trabajo
             </span>
           </motion.div>
 
@@ -72,6 +76,14 @@ const Hero = () => {
             </a>
             <a href="#contacto" className="btn-secondary text-center">
               Contactar
+            </a>
+            <a
+              href="/Gabriel Omar Lazo - CV.pdf"
+              download="Gabriel-Lazo-CV.pdf"
+              className="btn-secondary text-center flex items-center justify-center gap-2"
+            >
+              <HiDownload className="text-base" />
+              Descargar CV
             </a>
           </motion.div>
         </div>

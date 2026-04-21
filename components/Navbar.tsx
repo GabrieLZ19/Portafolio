@@ -3,6 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { HiMenu, HiX } from "react-icons/hi";
+import { FaLinkedin } from "react-icons/fa";
+import { HiArrowDown } from "react-icons/hi";
+import { contactInfo } from "@/lib/data";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,7 +50,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-10">
+          <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -57,16 +60,54 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
+            {/* LinkedIn */}
+            <a
+              href={`https://linkedin.com/in/${contactInfo.linkedin}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn de Gabriel Lazo"
+              className="text-foreground-secondary hover:text-foreground transition-colors text-lg"
+            >
+              <FaLinkedin />
+            </a>
+            {/* CV Download */}
+            <a
+              href="/Gabriel Omar Lazo - CV.pdf"
+              download="Gabriel-Lazo-CV.pdf"
+              className="font-mono text-xs uppercase tracking-widest px-4 py-2 border border-border text-foreground-secondary hover:text-foreground hover:border-foreground transition-colors flex items-center gap-2"
+            >
+              <HiArrowDown className="text-sm" />
+              CV
+            </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-foreground text-2xl"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <HiX /> : <HiMenu />}
-          </button>
+          {/* Mobile: LinkedIn + Hamburger */}
+          <div className="lg:hidden flex items-center gap-3">
+            <a
+              href={`https://linkedin.com/in/${contactInfo.linkedin}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="text-foreground text-xl"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="/Gabriel Omar Lazo - CV.pdf"
+              download="Gabriel-Lazo-CV.pdf"
+              aria-label="Descargar CV"
+              className="font-mono text-xs uppercase tracking-widest text-foreground-secondary border border-border px-3 py-1.5 hover:text-foreground hover:border-foreground transition-colors"
+            >
+              CV
+            </a>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-foreground text-2xl"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <HiX /> : <HiMenu />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

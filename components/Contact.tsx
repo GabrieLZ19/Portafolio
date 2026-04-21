@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { HiCheckCircle } from "react-icons/hi";
+import { FaWhatsapp } from "react-icons/fa";
 import { contactInfo } from "@/lib/data";
 
 interface FormData {
@@ -108,6 +109,18 @@ const Contact = () => {
                 <span className="font-sans text-base md:text-lg text-foreground font-medium">
                   {contactInfo.location}
                 </span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-mono text-xs uppercase text-foreground-tertiary tracking-widest mb-1">WhatsApp</span>
+                <a
+                  href={`https://wa.me/543865376697?text=${encodeURIComponent("Hola Gabriel, vi tu portafolio y me gustaría hablar contigo.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-sans text-base md:text-lg text-foreground font-medium hover:text-foreground-secondary transition-colors"
+                >
+                  <FaWhatsapp className="text-[#25d366] text-xl flex-shrink-0" />
+                  +54 9 3865 376697
+                </a>
               </div>
             </div>
           </motion.div>
