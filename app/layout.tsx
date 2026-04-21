@@ -13,7 +13,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const BASE_URL = "https://gabriellazo.vercel.app"; // ← cambia esto a tu URL real
+const BASE_URL = "https://gabriellazo.vercel.app";
 
 export const metadata: Metadata = {
   title:
@@ -40,6 +40,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Gabriel Lazo", url: BASE_URL }],
   creator: "Gabriel Lazo",
+  verification: {
+    google: "0AcoCIwXaJaM0rieJR2Xh2P3fxYjPw8hFpSxM5oNNks",
+  },
   alternates: {
     canonical: "/",
   },
