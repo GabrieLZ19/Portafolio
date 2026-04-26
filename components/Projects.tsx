@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { HiExternalLink, HiCode } from "react-icons/hi";
-import { projects } from "@/lib/data";
 import Image from "next/image";
+import { useLanguage } from "./LanguageProvider";
 
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { dict } = useLanguage();
 
   return (
     <section id="proyectos" className="section-padding bg-background border-b border-border" ref={ref}>
@@ -22,10 +23,10 @@ const Projects = () => {
         >
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-6 md:mb-8 gap-2">
             <h2 className="text-3xl md:text-5xl font-sans font-bold text-foreground uppercase tracking-tight">
-              Proyectos
+              {dict.projects.title}
             </h2>
             <span className="font-mono text-xs uppercase tracking-widest text-foreground-secondary">
-              [Archivo de Producción]
+              {dict.projects.subtitle}
             </span>
           </div>
           <div className="w-full h-px bg-border"></div>
@@ -33,7 +34,7 @@ const Projects = () => {
 
         {/* 1 col mobile, 2 col desktop — no border trick para evitar overflow */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-px md:bg-border border border-border">
-          {projects.map((project, index) => (
+          {dict.projects.items.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
@@ -48,6 +49,7 @@ const Projects = () => {
                     src={project.image}
                     alt={project.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
                   />
                 ) : (
@@ -97,7 +99,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-foreground hover:text-foreground-secondary transition-colors flex items-center gap-2"
                     >
-                      <span>Ver Proyecto</span>
+                      <span>{dict.projects.viewProject}</span>
                       <HiExternalLink />
                     </a>
                   ) : (
@@ -105,9 +107,10 @@ const Projects = () => {
                       Offline
                     </span>
                   )}
+                  {/* @ts-ignore */}
                   {project.githubUrl && (
                     <a
-                      href={project.githubUrl}
+                      href={(project as any).githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-foreground hover:text-foreground-secondary transition-colors flex items-center gap-2"

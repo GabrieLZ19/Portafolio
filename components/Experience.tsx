@@ -3,11 +3,12 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { experiences } from "@/lib/data";
+import { useLanguage } from "./LanguageProvider";
 
 const Experience = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { dict } = useLanguage();
 
   return (
     <section
@@ -24,17 +25,17 @@ const Experience = () => {
         >
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-6 md:mb-8 gap-2">
             <h2 className="text-3xl md:text-5xl font-sans font-bold text-foreground uppercase tracking-tight">
-              Experiencia
+              {dict.experience.title}
             </h2>
             <span className="font-mono text-xs uppercase tracking-widest text-foreground-secondary">
-              [Trayectoria Profesional]
+              {dict.experience.subtitle}
             </span>
           </div>
           <div className="w-full h-px bg-border"></div>
         </motion.div>
 
         <div className="flex flex-col gap-4 md:gap-0">
-          {experiences.map((exp, index) => (
+          {dict.experience.items.map((exp, index) => (
             <motion.div
               key={exp.id}
               initial={{ opacity: 0, y: 20 }}

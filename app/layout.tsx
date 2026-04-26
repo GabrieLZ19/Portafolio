@@ -6,6 +6,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { LanguageProvider } from "@/components/LanguageProvider";
 
 // Body Workhorse
 const inter = Inter({
@@ -13,7 +15,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const BASE_URL = "https://gabriellazo.vercel.app";
+const BASE_URL = "https://gabriellazo.tech";
 
 export const metadata: Metadata = {
   title:
@@ -120,7 +122,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="scroll-smooth">
+    <html lang="es" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -128,30 +130,34 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col selection:bg-white selection:text-black`}
+        className={`${inter.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black`}
       >
-        <Navbar />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-        <WhatsAppButton />
-        <Analytics />
-        {/* Google Analytics 4 */}
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-              `}
-            </Script>
-          </>
-        )}
+        <ThemeProvider>
+          <LanguageProvider>
+            <Navbar />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+            <WhatsAppButton />
+            <Analytics />
+            {/* Google Analytics 4 */}
+            {process.env.NEXT_PUBLIC_GA_ID && (
+              <>
+                <Script
+                  src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+                  strategy="afterInteractive"
+                />
+                <Script id="google-analytics" strategy="afterInteractive">
+                  {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+                  `}
+                </Script>
+              </>
+            )}
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

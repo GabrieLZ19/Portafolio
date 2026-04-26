@@ -3,11 +3,12 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { education } from "@/lib/data";
+import { useLanguage } from "./LanguageProvider";
 
 const Education = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { dict } = useLanguage();
 
   return (
     <section id="educacion" className="section-padding bg-background border-b border-border" ref={ref}>
@@ -20,17 +21,17 @@ const Education = () => {
         >
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-6 md:mb-8 gap-2">
             <h2 className="text-3xl md:text-5xl font-sans font-bold text-foreground uppercase tracking-tight">
-              Educación
+              {dict.education.title}
             </h2>
             <span className="font-mono text-xs uppercase tracking-widest text-foreground-secondary">
-              [Formación Académica]
+              {dict.education.subtitle}
             </span>
           </div>
           <div className="w-full h-px bg-border"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {education.map((edu, index) => (
+          {dict.education.items.map((edu, index) => (
             <motion.div
               key={edu.id}
               initial={{ opacity: 0, y: 20 }}

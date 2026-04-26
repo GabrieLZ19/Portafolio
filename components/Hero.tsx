@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { HiArrowDown, HiDownload } from "react-icons/hi";
 import { contactInfo } from "@/lib/data";
+import { useLanguage } from "./LanguageProvider";
 
 const Hero = () => {
+  const { dict } = useLanguage();
+
   return (
     <section
       id="inicio"
@@ -24,11 +27,11 @@ const Hero = () => {
             className="mb-6 md:mb-8 flex flex-wrap items-center gap-3"
           >
             <span className="font-mono text-xs tracking-[0.2em] text-foreground-secondary uppercase px-3 py-1.5 md:px-4 md:py-2 border border-border">
-              Portafolio 2026
+              {dict.hero.portfolio}
             </span>
             <span className="font-mono text-xs tracking-[0.2em] uppercase px-3 py-1.5 md:px-4 md:py-2 border border-[#25d366] text-[#25d366] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#25d366] animate-pulse" />
-              Disponible para trabajo
+              {dict.hero.available}
             </span>
           </motion.div>
 
@@ -40,7 +43,7 @@ const Hero = () => {
             className="mb-6 w-full"
           >
             <h1 className="text-[2.8rem] leading-[0.92] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7.5rem] font-sans font-bold tracking-tighter text-foreground uppercase">
-              Gabriel Lazo
+              {dict.hero.name}
             </h1>
           </motion.div>
 
@@ -52,8 +55,8 @@ const Hero = () => {
             className="mb-10 md:mb-12 w-full flex flex-col md:flex-row md:justify-between md:items-end border-t border-border pt-6 gap-4"
           >
             <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-sans text-foreground-secondary leading-tight max-w-xl">
-              Desarrollador Full Stack & Mobile. <br className="hidden sm:block" />
-              Construyendo arquitecturas escalables y experiencias precisas.
+              {dict.hero.role} <br className="hidden sm:block" />
+              {dict.hero.subtitle}
             </h2>
 
             <a
@@ -72,10 +75,10 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
           >
             <a href="#proyectos" className="btn-primary text-center">
-              Ver Proyectos
+              {dict.hero.cta}
             </a>
             <a href="#contacto" className="btn-secondary text-center">
-              Contactar
+              {dict.hero.contact}
             </a>
             <a
               href="/Gabriel Omar Lazo - CV.pdf"
@@ -83,7 +86,7 @@ const Hero = () => {
               className="btn-secondary text-center flex items-center justify-center gap-2"
             >
               <HiDownload className="text-base" />
-              Descargar CV
+              {dict.hero.downloadCv}
             </a>
           </motion.div>
         </div>

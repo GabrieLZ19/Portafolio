@@ -8,6 +8,7 @@ import emailjs from "@emailjs/browser";
 import { HiCheckCircle } from "react-icons/hi";
 import { FaWhatsapp } from "react-icons/fa";
 import { contactInfo } from "@/lib/data";
+import { useLanguage } from "./LanguageProvider";
 
 interface FormData {
   name: string;
@@ -21,6 +22,7 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const { dict } = useLanguage();
 
   const {
     register,
@@ -49,7 +51,7 @@ const Contact = () => {
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (err) {
       console.error("EmailJS Error:", err);
-      setError("Error al enviar. Por favor, intenta de nuevo.");
+      setError(dict.contact.form.error);
     } finally {
       setIsLoading(false);
     }
@@ -70,10 +72,10 @@ const Contact = () => {
         >
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-6 md:mb-8 gap-2">
             <h2 className="text-3xl md:text-5xl font-sans font-bold text-foreground uppercase tracking-tight">
-              Contacto
+              {dict.contact.title}
             </h2>
             <span className="font-mono text-xs uppercase tracking-widest text-foreground-secondary">
-              [Protocolo de Comunicación]
+              {dict.contact.subtitle}
             </span>
           </div>
           <div className="w-full h-px bg-border"></div>
@@ -89,29 +91,29 @@ const Contact = () => {
             className="flex flex-col justify-between"
           >
             <div>
-              <h3 className="text-2xl md:text-3xl font-sans font-medium mb-6 md:mb-8">
-                Iniciemos un <br /> nuevo proyecto.
+              <h3 className="text-2xl md:text-3xl font-sans font-medium mb-6 md:mb-8 whitespace-pre-line">
+                {dict.contact.heading}
               </h3>
               <p className="text-sm md:text-base text-foreground-secondary mb-8 md:mb-12 leading-[1.7] max-w-md">
-                Si necesitas escala, precisión o construir desde cero, estoy disponible para hablar.
+                {dict.contact.paragraph}
               </p>
             </div>
 
             <div className="space-y-5 pt-6 border-t border-border">
               <div className="flex flex-col">
-                <span className="font-mono text-xs uppercase text-foreground-tertiary tracking-widest mb-1">Email</span>
+                <span className="font-mono text-xs uppercase text-foreground-tertiary tracking-widest mb-1">{dict.contact.emailLabel}</span>
                 <a href={`mailto:${contactInfo.email}`} className="font-sans text-base md:text-lg text-foreground font-medium hover:text-foreground-secondary transition-colors break-all">
                   {contactInfo.email}
                 </a>
               </div>
               <div className="flex flex-col">
-                <span className="font-mono text-xs uppercase text-foreground-tertiary tracking-widest mb-1">Ubicación</span>
+                <span className="font-mono text-xs uppercase text-foreground-tertiary tracking-widest mb-1">{dict.contact.locationLabel}</span>
                 <span className="font-sans text-base md:text-lg text-foreground font-medium">
                   {contactInfo.location}
                 </span>
               </div>
               <div className="flex flex-col">
-                <span className="font-mono text-xs uppercase text-foreground-tertiary tracking-widest mb-1">WhatsApp</span>
+                <span className="font-mono text-xs uppercase text-foreground-tertiary tracking-widest mb-1">{dict.contact.whatsappLabel}</span>
                 <a
                   href={`https://wa.me/543865376697?text=${encodeURIComponent("Hola Gabriel, vi tu portafolio y me gustaría hablar contigo.")}`}
                   target="_blank"
@@ -134,23 +136,23 @@ const Contact = () => {
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center p-10 border border-border bg-background-card">
                 <HiCheckCircle className="text-4xl text-foreground mb-4" />
-                <h3 className="text-xl font-sans font-medium mb-3">Mensaje Transmitido</h3>
+                <h3 className="text-xl font-sans font-medium mb-3">{dict.contact.form.successTitle}</h3>
                 <p className="text-foreground-secondary text-center font-mono text-xs uppercase">
-                  Comunicación recibida. Respuesta pronto.
+                  {dict.contact.form.successMessage}
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-7">
                 <div>
                   <label htmlFor="name" className="block font-mono text-xs uppercase tracking-widest text-foreground-secondary mb-3">
-                    Nombre
+                    {dict.contact.form.name}
                   </label>
                   <input
                     id="name"
                     type="text"
-                    {...register("name", { required: "Requerido" })}
+                    {...register("name", { required: dict.contact.form.required })}
                     className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-foreground transition-colors text-foreground placeholder-foreground-tertiary text-sm md:text-base"
-                    placeholder="Tu nombre completo"
+                    placeholder={dict.contact.form.namePlaceholder}
                   />
                   {errors.name && (
                     <p className="text-foreground-tertiary font-mono text-xs mt-2 uppercase">✕ {errors.name.message}</p>
@@ -159,17 +161,17 @@ const Contact = () => {
 
                 <div>
                   <label htmlFor="email" className="block font-mono text-xs uppercase tracking-widest text-foreground-secondary mb-3">
-                    Email
+                    {dict.contact.form.email}
                   </label>
                   <input
                     id="email"
                     type="email"
                     {...register("email", {
-                      required: "Requerido",
-                      pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: "Formato inválido" },
+                      required: dict.contact.form.required,
+                      pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: dict.contact.form.invalidFormat },
                     })}
                     className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-foreground transition-colors text-foreground placeholder-foreground-tertiary text-sm md:text-base"
-                    placeholder="tu@email.com"
+                    placeholder={dict.contact.form.emailPlaceholder}
                   />
                   {errors.email && (
                     <p className="text-foreground-tertiary font-mono text-xs mt-2 uppercase">✕ {errors.email.message}</p>
@@ -178,14 +180,14 @@ const Contact = () => {
 
                 <div>
                   <label htmlFor="message" className="block font-mono text-xs uppercase tracking-widest text-foreground-secondary mb-3">
-                    Mensaje
+                    {dict.contact.form.message}
                   </label>
                   <textarea
                     id="message"
                     rows={4}
-                    {...register("message", { required: "Requerido" })}
+                    {...register("message", { required: dict.contact.form.required })}
                     className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-foreground transition-colors text-foreground resize-none placeholder-foreground-tertiary text-sm md:text-base"
-                    placeholder="Cuéntame sobre tu proyecto..."
+                    placeholder={dict.contact.form.messagePlaceholder}
                   />
                   {errors.message && (
                     <p className="text-foreground-tertiary font-mono text-xs mt-2 uppercase">✕ {errors.message.message}</p>
@@ -196,7 +198,7 @@ const Contact = () => {
 
                 <div className="pt-2">
                   <button type="submit" className="w-full btn-primary" disabled={isLoading}>
-                    {isLoading ? "Enviando..." : "Enviar Mensaje"}
+                    {isLoading ? dict.contact.form.sending : dict.contact.form.send}
                   </button>
                 </div>
               </form>

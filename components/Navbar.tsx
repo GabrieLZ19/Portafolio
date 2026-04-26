@@ -6,10 +6,14 @@ import { HiMenu, HiX } from "react-icons/hi";
 import { FaLinkedin } from "react-icons/fa";
 import { HiArrowDown } from "react-icons/hi";
 import { contactInfo } from "@/lib/data";
+import ThemeToggle from "./ThemeToggle";
+import LanguageToggle from "./LanguageToggle";
+import { useLanguage } from "./LanguageProvider";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { dict } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,13 +25,13 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { href: "#inicio", label: "Inicio" },
-    { href: "#sobre-mi", label: "Sobre mí" },
-    { href: "#experiencia", label: "Experiencia" },
-    { href: "#educacion", label: "Educación" },
-    { href: "#habilidades", label: "Habilidades" },
-    { href: "#proyectos", label: "Proyectos" },
-    { href: "#contacto", label: "Contacto" },
+    { href: "#inicio", label: dict.nav.home },
+    { href: "#sobre-mi", label: dict.nav.about },
+    { href: "#experiencia", label: dict.nav.experience },
+    { href: "#educacion", label: dict.nav.education },
+    { href: "#habilidades", label: dict.nav.skills },
+    { href: "#proyectos", label: dict.nav.projects },
+    { href: "#contacto", label: dict.nav.contact },
   ];
 
   const handleLinkClick = () => {
@@ -60,49 +64,39 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            {/* LinkedIn */}
-            <a
-              href={`https://linkedin.com/in/${contactInfo.linkedin}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn de Gabriel Lazo"
-              className="text-foreground-secondary hover:text-foreground transition-colors text-lg"
-            >
-              <FaLinkedin />
-            </a>
-            {/* CV Download */}
-            <a
-              href="/Gabriel Omar Lazo - CV.pdf"
-              download="Gabriel-Lazo-CV.pdf"
-              className="font-mono text-xs uppercase tracking-widest px-4 py-2 border border-border text-foreground-secondary hover:text-foreground hover:border-foreground transition-colors flex items-center gap-2"
-            >
-              <HiArrowDown className="text-sm" />
-              CV
-            </a>
+            
+            <div className="flex items-center space-x-4 border-l border-border pl-8 ml-4">
+              <ThemeToggle />
+              <LanguageToggle />
+              {/* LinkedIn */}
+              <a
+                href={`https://linkedin.com/in/${contactInfo.linkedin}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="text-foreground-secondary hover:text-foreground transition-colors text-lg ml-2"
+              >
+                <FaLinkedin />
+              </a>
+              {/* CV Download */}
+              <a
+                href="/Gabriel Omar Lazo - CV.pdf"
+                download="Gabriel-Lazo-CV.pdf"
+                className="font-mono text-xs uppercase tracking-widest px-4 py-2 border border-border text-foreground-secondary hover:text-foreground hover:border-foreground transition-colors flex items-center gap-2"
+              >
+                <HiArrowDown className="text-sm" />
+                {dict.nav.cv}
+              </a>
+            </div>
           </div>
 
           {/* Mobile: LinkedIn + Hamburger */}
           <div className="lg:hidden flex items-center gap-3">
-            <a
-              href={`https://linkedin.com/in/${contactInfo.linkedin}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="text-foreground text-xl"
-            >
-              <FaLinkedin />
-            </a>
-            <a
-              href="/Gabriel Omar Lazo - CV.pdf"
-              download="Gabriel-Lazo-CV.pdf"
-              aria-label="Descargar CV"
-              className="font-mono text-xs uppercase tracking-widest text-foreground-secondary border border-border px-3 py-1.5 hover:text-foreground hover:border-foreground transition-colors"
-            >
-              CV
-            </a>
+            <ThemeToggle />
+            <LanguageToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-foreground text-2xl"
+              className="text-foreground text-2xl ml-2"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <HiX /> : <HiMenu />}
@@ -124,6 +118,23 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
+              <div className="flex items-center justify-between pt-6 px-2">
+                <a
+                  href={`https://linkedin.com/in/${contactInfo.linkedin}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground-secondary hover:text-foreground text-2xl"
+                >
+                  <FaLinkedin />
+                </a>
+                <a
+                  href="/Gabriel Omar Lazo - CV.pdf"
+                  download="Gabriel-Lazo-CV.pdf"
+                  className="font-mono text-xs uppercase tracking-widest px-6 py-2 border border-border text-foreground-secondary hover:text-foreground hover:border-foreground transition-colors"
+                >
+                  {dict.nav.cv}
+                </a>
+              </div>
             </div>
           </div>
         )}

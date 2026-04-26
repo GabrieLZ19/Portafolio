@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,19 +11,19 @@ const config: Config = {
     extend: {
       colors: {
         background: {
-          DEFAULT: "#050505", // Surface
-          surface: "#0e0e0e", // surface_container_lowest
-          card: "#1a1a1a", // surface_container_high
-          elevated: "#2a2a2a",
+          DEFAULT: "var(--background)",
+          surface: "var(--background-surface)",
+          card: "var(--background-card)",
+          elevated: "var(--background-elevated)",
         },
         foreground: {
-          DEFAULT: "#ffffff",
-          secondary: "#a0a0a0",
-          tertiary: "#c7c6c6",
+          DEFAULT: "var(--foreground)",
+          secondary: "var(--foreground-secondary)",
+          tertiary: "var(--foreground-tertiary)",
         },
         border: {
-          DEFAULT: "#1a1a1a",
-          light: "#474747",
+          DEFAULT: "var(--border)",
+          light: "var(--border-light)",
         },
       },
       fontFamily: {

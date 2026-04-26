@@ -72,6 +72,7 @@ export const skills: Skill[] = [
     items: [
       "Node.js",
       "Express.js",
+      "NestJS",
       "PostgreSQL",
       "MongoDB",
       "Mongoose",

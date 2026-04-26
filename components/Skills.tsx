@@ -7,8 +7,9 @@ import {
   SiReact, SiNextdotjs, SiNodedotjs, SiTypescript,
   SiTailwindcss, SiPostgresql, SiMongodb, SiGit,
   SiVite, SiJavascript, SiExpress, SiGithub, SiFlutter,
+  SiNestjs
 } from "react-icons/si";
-import { skills } from "@/lib/data";
+import { useLanguage } from "./LanguageProvider";
 
 const iconMap: { [key: string]: any } = {
   "React.js": SiReact,
@@ -21,6 +22,7 @@ const iconMap: { [key: string]: any } = {
   Flutter: SiFlutter,
   "Node.js": SiNodedotjs,
   "Express.js": SiExpress,
+  "NestJS": SiNestjs,
   PostgreSQL: SiPostgresql,
   MongoDB: SiMongodb,
   Mongoose: SiMongodb,
@@ -31,6 +33,7 @@ const iconMap: { [key: string]: any } = {
 const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { dict } = useLanguage();
 
   return (
     <section
@@ -47,10 +50,10 @@ const Skills = () => {
         >
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-6 md:mb-8 gap-2">
             <h2 className="text-3xl md:text-5xl font-sans font-bold text-foreground uppercase tracking-tight">
-              Arsenal Técnico
+              {dict.skills.title}
             </h2>
             <span className="font-mono text-xs uppercase tracking-widest text-foreground-secondary">
-              [Stack & Herramientas]
+              {dict.skills.subtitle}
             </span>
           </div>
           <div className="w-full h-px bg-border"></div>
@@ -58,7 +61,7 @@ const Skills = () => {
 
         {/* Categories — 1 col mobile, 3 col desktop */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-x-8 md:gap-y-12">
-          {skills.map((skillCategory, categoryIndex) => (
+          {dict.skills.items.map((skillCategory, categoryIndex) => (
             <div key={skillCategory.category} className="flex flex-col">
               <motion.h3
                 initial={{ opacity: 0, x: -10 }}
