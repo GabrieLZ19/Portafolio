@@ -3,6 +3,23 @@ import { Experience, Education, Skill, Project, ContactInfo } from "@/types";
 export const experiences: Experience[] = [
   {
     id: 1,
+    company: "Yatta",
+    position: "Desarrollador de Software Desktop & Sistemas",
+    period: "Sep 2026 - Actualidad",
+    description:
+      "Diseño y desarrollo integral de aplicación de escritorio POS para facturación electrónica (ARCA / ex AFIP). Arquitectura de costo cero en infraestructura con Tauri v2, Rust y SQLite embebido por perfil. Integración de sidecar en TypeScript para emisión fiscal en tiempo real (Factura C y Notas de Crédito), tickets térmicos ESC/POS, sistema de licencias por HWID offline y pipeline de auto-actualizaciones firmadas.",
+    technologies: [
+      "Tauri v2",
+      "Rust",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "SQLite",
+      "ARCA / SOAP",
+    ],
+  },
+  {
+    id: 2,
     company: "Furech",
     position: "Desarrollador Frontend & Web",
     period: "Ago 2026",
@@ -17,7 +34,7 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     company: "Beland",
     position: "Desarrollador Full Stack & Mobile",
     period: "Jul 2025 - Ene 2026",
@@ -26,7 +43,7 @@ export const experiences: Experience[] = [
     technologies: ["React Native", "Expo", "Nest JS", "SCRUM"],
   },
   {
-    id: 3,
+    id: 4,
     company: "Cubix Casino & Bets",
     position: "Desarrollador Full Stack (Prácticas)",
     period: "Jul 2024 - Ago 2024",
@@ -35,7 +52,7 @@ export const experiences: Experience[] = [
     technologies: ["React", "Tailwind CSS", "Ant Design", "PostgreSQL"],
   },
   {
-    id: 4,
+    id: 5,
     company: "Fast Burger",
     position: "Desarrollador Full Stack (Prácticas)",
     period: "Abr 2024 - May 2024",
@@ -103,6 +120,26 @@ export const skills: Skill[] = [
 export const projects: Project[] = [
   {
     id: 1,
+    title: "Yatta",
+    description:
+      "Sistema de facturación electrónica POS de escritorio (Tauri v2 + Rust) para emisión de Factura C y Notas de Crédito con autorización en tiempo real ante ARCA (ex AFIP). Arquitectura de costo cero en infraestructura con SQLite embebido por perfil, sidecar local de alto rendimiento, soporte para tickets térmicos (58/80mm), QR RG 4892, licencias offline por hardware (HWID) y auto-actualizaciones firmadas.",
+    technologies: [
+      "Tauri v2",
+      "Rust",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "SQLite",
+      "ARCA / SOAP",
+      "Bun",
+    ],
+    image: "/projects/yatta.png",
+    videoUrl: "/projects/yatta-promo.mp4",
+    demoUrl: "https://github.com/GabrieLZ19/Facturador-releases",
+    githubUrl: "https://github.com/GabrieLZ19/Facturador-releases/releases",
+  },
+  {
+    id: 2,
     title: "Furech",
     description:
       "Landing page de marketing e institucional para la suite SaaS Furech (CRM, Drive, Meet, Mail y Flows IA). Diseñada con alto impacto visual, modo oscuro/claro y microanimaciones fluidas.",
@@ -117,7 +154,7 @@ export const projects: Project[] = [
     demoUrl: "https://www.furech.com/",
   },
   {
-    id: 2,
+    id: 3,
     title: "Beland",
     description:
       "App web y móvil que recompensa a los usuarios por acciones sostenibles. Desarrollo con React Native/Expo y backend en NestJS.",
@@ -126,7 +163,7 @@ export const projects: Project[] = [
     demoUrl: "https://beland.app/",
   },
   {
-    id: 3,
+    id: 4,
     title: "Cubix Casino & Bets",
     description:
       "Plataforma de criptomonedas y casino virtual con transacciones integradas y un diseño web interactivo.",
@@ -135,7 +172,7 @@ export const projects: Project[] = [
     demoUrl: "https://cubixcasino.com/",
   },
   {
-    id: 4,
+    id: 5,
     title: "Fast Burger",
     description:
       "Ecommerce para cadena de comida rápida, autenticación, pagos y chat en tiempo real.",
@@ -144,7 +181,7 @@ export const projects: Project[] = [
     demoUrl: "https://fast-burguers.vercel.app/",
   },
   {
-    id: 5,
+    id: 6,
     title: "Recorder IA",
     description:
       "Aplicación orientada a la productividad estudiantil mediante herramientas de grabación y gestión inteligente.",
@@ -153,7 +190,7 @@ export const projects: Project[] = [
     demoUrl: "",
   },
   {
-    id: 6,
+    id: 7,
     title: "El Diccionario del Mentiroso",
     description:
       "Videojuego móvil de deducción social desarrollado independientemente desde la conceptualización hasta la implementación.",
@@ -162,7 +199,7 @@ export const projects: Project[] = [
     demoUrl: "",
   },
   {
-    id: 7,
+    id: 8,
     title: "Sistema de Turnos",
     description:
       "Aplicación web CRUD para gestión de agendas y reservas de turnos con backend relacional.",

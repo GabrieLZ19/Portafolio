@@ -28,6 +28,7 @@ export interface Project {
   image?: string;
   demoUrl?: string;
   githubUrl?: string;
+  videoUrl?: string;
 }
 
 export interface ContactInfo {
