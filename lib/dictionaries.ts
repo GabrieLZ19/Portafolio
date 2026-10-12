@@ -43,6 +43,23 @@ export const dictionaries = {
       items: [
         {
           id: 1,
+          company: "Yatta",
+          position: "Desarrollador de Software Desktop & Sistemas",
+          period: "Sep 2026 - Actualidad",
+          description:
+            "Diseño y desarrollo integral de aplicación de escritorio POS para facturación electrónica (ARCA / ex AFIP). Arquitectura de costo cero en infraestructura con Tauri v2, Rust y SQLite embebido por perfil. Integración de sidecar en TypeScript para emisión fiscal en tiempo real (Factura C y Notas de Crédito), tickets térmicos ESC/POS, sistema de licencias por HWID offline y pipeline de auto-actualizaciones firmadas.",
+          technologies: [
+            "Tauri v2",
+            "Rust",
+            "React",
+            "TypeScript",
+            "Tailwind CSS",
+            "SQLite",
+            "ARCA / SOAP",
+          ],
+        },
+        {
+          id: 2,
           company: "Furech",
           position: "Desarrollador Frontend & Web",
           period: "Ago 2026",
@@ -57,7 +74,7 @@ export const dictionaries = {
           ],
         },
         {
-          id: 2,
+          id: 3,
           company: "Beland",
           position: "Desarrollador Full Stack & Mobile",
           period: "Jul 2025 - Ene 2026",
@@ -66,7 +83,7 @@ export const dictionaries = {
           technologies: ["React Native", "Expo", "Nest JS", "SCRUM"],
         },
         {
-          id: 3,
+          id: 4,
           company: "Cubix Casino & Bets",
           position: "Desarrollador Full Stack (Prácticas)",
           period: "Jul 2024 - Ago 2024",
@@ -75,7 +92,7 @@ export const dictionaries = {
           technologies: ["React", "Tailwind CSS", "Ant Design", "PostgreSQL"],
         },
         {
-          id: 4,
+          id: 5,
           company: "Fast Burger",
           position: "Desarrollador Full Stack (Prácticas)",
           period: "Abr 2024 - May 2024",
@@ -150,9 +167,32 @@ export const dictionaries = {
       title: "Proyectos",
       subtitle: "[Trabajos Destacados]",
       viewProject: "Ver Proyecto",
+      watchVideo: "Ver Video",
+      promoVideo: "Video Promocional",
+      releases: "Releases",
       items: [
         {
           id: 1,
+          title: "Yatta",
+          description:
+            "Sistema de facturación electrónica POS de escritorio (Tauri v2 + Rust) para emisión de Factura C y Notas de Crédito con autorización en tiempo real ante ARCA (ex AFIP). Arquitectura de costo cero en infraestructura con SQLite embebido por perfil, sidecar local de alto rendimiento, soporte para tickets térmicos (58/80mm), QR RG 4892, licencias offline por hardware (HWID) y auto-actualizaciones firmadas.",
+          technologies: [
+            "Tauri v2",
+            "Rust",
+            "React",
+            "TypeScript",
+            "Tailwind CSS",
+            "SQLite",
+            "ARCA / SOAP",
+            "Bun",
+          ],
+          image: "/projects/yatta.png",
+          videoUrl: "/projects/yatta-promo.mp4",
+          demoUrl: "https://github.com/GabrieLZ19/Facturador-releases",
+          githubUrl: "https://github.com/GabrieLZ19/Facturador-releases/releases",
+        },
+        {
+          id: 2,
           title: "Furech",
           description:
             "Landing page de marketing e institucional para la suite SaaS Furech (CRM, Drive, Meet, Mail y Flows IA). Diseñada con alto impacto visual, modo oscuro/claro y microanimaciones fluidas.",
@@ -167,7 +207,7 @@ export const dictionaries = {
           demoUrl: "https://www.furech.com/",
         },
         {
-          id: 2,
+          id: 3,
           title: "Beland",
           description:
             "App web y móvil que recompensa a los usuarios por acciones sostenibles. Desarrollo con React Native/Expo y backend en NestJS.",
@@ -176,7 +216,7 @@ export const dictionaries = {
           demoUrl: "https://beland.app/",
         },
         {
-          id: 3,
+          id: 4,
           title: "Cubix Casino & Bets",
           description:
             "Plataforma de criptomonedas y casino virtual con transacciones integradas y un diseño web interactivo.",
@@ -185,7 +225,7 @@ export const dictionaries = {
           demoUrl: "https://cubixcasino.com/",
         },
         {
-          id: 4,
+          id: 5,
           title: "Fast Burger",
           description:
             "Ecommerce para cadena de comida rápida, autenticación, pagos y chat en tiempo real.",
@@ -194,7 +234,7 @@ export const dictionaries = {
           demoUrl: "https://fast-burguers.vercel.app/",
         },
         {
-          id: 5,
+          id: 6,
           title: "Recorder IA",
           description:
             "Aplicación orientada a la productividad estudiantil mediante herramientas de grabación y gestión inteligente.",
@@ -208,7 +248,7 @@ export const dictionaries = {
           demoUrl: "",
         },
         {
-          id: 6,
+          id: 7,
           title: "El Diccionario del Mentiroso",
           description:
             "Videojuego móvil de deducción social desarrollado independientemente desde la conceptualización hasta la implementación.",
@@ -217,7 +257,7 @@ export const dictionaries = {
           demoUrl: "",
         },
         {
-          id: 7,
+          id: 8,
           title: "Sistema de Turnos",
           description:
             "Aplicación web CRUD para gestión de agendas y reservas de turnos con backend relacional.",
@@ -294,6 +334,23 @@ export const dictionaries = {
       items: [
         {
           id: 1,
+          company: "Yatta",
+          position: "Desktop & Systems Software Developer",
+          period: "Sep 2026 - Present",
+          description:
+            "End-to-end design and development of a POS desktop application for electronic invoicing (ARCA / ex-AFIP). Built with zero-cost infrastructure using Tauri v2, Rust, and embedded SQLite database per profile. Integrated a TypeScript sidecar for real-time fiscal voucher issuance (Invoice C and Credit Notes), ESC/POS thermal ticket printing, offline HWID machine licensing, and signed auto-updates.",
+          technologies: [
+            "Tauri v2",
+            "Rust",
+            "React",
+            "TypeScript",
+            "Tailwind CSS",
+            "SQLite",
+            "ARCA / SOAP",
+          ],
+        },
+        {
+          id: 2,
           company: "Furech",
           position: "Frontend & Web Developer",
           period: "Aug 2026",
@@ -308,7 +365,7 @@ export const dictionaries = {
           ],
         },
         {
-          id: 2,
+          id: 3,
           company: "Beland",
           position: "Full Stack & Mobile Developer",
           period: "Jul 2025 - Jan 2026",
@@ -317,7 +374,7 @@ export const dictionaries = {
           technologies: ["React Native", "Expo", "Nest JS", "SCRUM"],
         },
         {
-          id: 3,
+          id: 4,
           company: "Cubix Casino & Bets",
           position: "Full Stack Developer (Internship)",
           period: "Jul 2024 - Aug 2024",
@@ -326,7 +383,7 @@ export const dictionaries = {
           technologies: ["React", "Tailwind CSS", "Ant Design", "PostgreSQL"],
         },
         {
-          id: 4,
+          id: 5,
           company: "Fast Burger",
           position: "Full Stack Developer (Internship)",
           period: "Apr 2024 - May 2024",
@@ -401,9 +458,32 @@ export const dictionaries = {
       title: "Projects",
       subtitle: "[Featured Work]",
       viewProject: "View Project",
+      watchVideo: "Watch Video",
+      promoVideo: "Promotional Video",
+      releases: "Releases",
       items: [
         {
           id: 1,
+          title: "Yatta",
+          description:
+            "Desktop POS electronic invoicing system (Tauri v2 + Rust) for issuing compliant invoices and credit notes with real-time ARCA (ex-AFIP) authorization. Built with zero-cost infrastructure using embedded SQLite per profile, high-speed local sidecar, 58/80mm thermal ticket printing, RG 4892 QR codes, offline HWID machine licensing, and cryptographically signed auto-updates.",
+          technologies: [
+            "Tauri v2",
+            "Rust",
+            "React",
+            "TypeScript",
+            "Tailwind CSS",
+            "SQLite",
+            "ARCA / SOAP",
+            "Bun",
+          ],
+          image: "/projects/yatta.png",
+          videoUrl: "/projects/yatta-promo.mp4",
+          demoUrl: "https://github.com/GabrieLZ19/Facturador-releases",
+          githubUrl: "https://github.com/GabrieLZ19/Facturador-releases/releases",
+        },
+        {
+          id: 2,
           title: "Furech",
           description:
             "Marketing and product landing page for Furech's all-in-one SaaS suite (CRM, Drive, Meet, Mail, and AI Flows). Built with high visual impact, dark/light modes, and fluid animations.",
@@ -418,7 +498,7 @@ export const dictionaries = {
           demoUrl: "https://www.furech.com/",
         },
         {
-          id: 2,
+          id: 3,
           title: "Beland",
           description:
             "Web and mobile app that rewards users for sustainable actions. Developed with React Native/Expo and backend in NestJS.",
@@ -427,7 +507,7 @@ export const dictionaries = {
           demoUrl: "https://beland.app/",
         },
         {
-          id: 3,
+          id: 4,
           title: "Cubix Casino & Bets",
           description:
             "Cryptocurrency and virtual casino platform with integrated transactions and interactive web design.",
@@ -436,7 +516,7 @@ export const dictionaries = {
           demoUrl: "https://cubixcasino.com/",
         },
         {
-          id: 4,
+          id: 5,
           title: "Fast Burger",
           description:
             "Ecommerce for a fast food chain, authentication, payments, and real-time chat.",
@@ -445,7 +525,7 @@ export const dictionaries = {
           demoUrl: "https://fast-burguers.vercel.app/",
         },
         {
-          id: 5,
+          id: 6,
           title: "Recorder IA",
           description:
             "Student productivity-oriented application using recording and intelligent management tools.",
@@ -459,7 +539,7 @@ export const dictionaries = {
           demoUrl: "",
         },
         {
-          id: 6,
+          id: 7,
           title: "El Diccionario del Mentiroso",
           description:
             "Social deduction mobile game developed independently from conceptualization to implementation.",
@@ -468,7 +548,7 @@ export const dictionaries = {
           demoUrl: "",
         },
         {
-          id: 7,
+          id: 8,
           title: "Appointment System",
           description:
             "CRUD web application for agenda management and appointment booking with relational backend.",
